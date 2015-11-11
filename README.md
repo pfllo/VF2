@@ -1,0 +1,1 @@
+This is a simple implementation of gSpan algorithm.
