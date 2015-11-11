@@ -16,8 +16,8 @@ public class App {
 
 	public static void main(String[] args) throws FileNotFoundException {
 		Path graphPath = Paths.get("/Users/luo123n/Projects/VF2/data/graphDB", "mygraphdb.data");
-		Path queryPath = Paths.get("/Users/luo123n/Projects/VF2/data/graphDB", "Q4.my");
-		Path outPath = Paths.get("/Users/luo123n/Projects/VF2/data/graphDB", "res_Q4.my");
+		Path queryPath = Paths.get("/Users/luo123n/Projects/VF2/data/graphDB", "Q12.my");
+		Path outPath = Paths.get("/Users/luo123n/Projects/VF2/data/graphDB", "res_Q12.my");
 		
 		long startMilli = System.currentTimeMillis();
 	
@@ -105,7 +105,7 @@ public class App {
 	
 	private static void printTimeFlapse(long startMilli){
 		long currentMili=System.currentTimeMillis();
-		System.out.println(((currentMili - startMilli) / 1000) + " seconds flapsed");
+		System.out.println(((currentMili - startMilli) / 1000) + " seconds elapsed");
 	}
 	
 	private static void printAverageMatchingTime(long startMilli, int queryCnt){
