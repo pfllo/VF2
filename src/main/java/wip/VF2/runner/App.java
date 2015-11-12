@@ -15,9 +15,39 @@ import wip.VF2.graph.Graph;
 public class App {
 
 	public static void main(String[] args) throws FileNotFoundException {
+		
 		Path graphPath = Paths.get("/Users/luo123n/Projects/VF2/data/graphDB", "mygraphdb.data");
-		Path queryPath = Paths.get("/Users/luo123n/Projects/VF2/data/graphDB", "Q12.my");
-		Path outPath = Paths.get("/Users/luo123n/Projects/VF2/data/graphDB", "res_Q12.my");
+		Path queryPath = Paths.get("/Users/luo123n/Projects/VF2/data/graphDB", "Q20.my");
+		Path outPath = Paths.get("/Users/luo123n/Projects/VF2/data/graphDB", "res_Q20.my");
+		
+		if (args.length == 0) {
+			printUsage();
+			System.out.println();
+			System.out.println("Warning: no arguments given, using default arguments");
+			System.out.println();
+		}
+		
+		for (int i = 0; i < args.length; i++){
+			if (args[i].equals("-t")) {
+				graphPath = Paths.get(args[i+1]);
+				i++;
+			} else if (args[i].equals("-q")) {
+				queryPath = Paths.get(args[i+1]);
+				i++;
+			} else if (args[i].equals("-o")) {
+				outPath = Paths.get(args[i+1]);
+				i++;
+			} else {
+				printUsage();
+				System.exit(1);
+			}
+		}
+		
+		System.out.println("Target Graph Path: " + graphPath.toString());
+		System.out.println("Query Graph Path: " + queryPath.toString());
+		System.out.println("Output Path: " + outPath.toString());
+		System.out.println();
+		
 		
 		long startMilli = System.currentTimeMillis();
 	
@@ -111,5 +141,9 @@ public class App {
 	private static void printAverageMatchingTime(long startMilli, int queryCnt){
 		long currentMili=System.currentTimeMillis();
 		System.out.println(((currentMili - startMilli) / queryCnt) + " milliseconds per graph in average.");
+	}
+	
+	private static void printUsage(){
+		System.out.println("Usage: -t target_graph_path -q query_graph_path -o output_path");
 	}
 }

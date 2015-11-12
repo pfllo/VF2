@@ -1,5 +1,5 @@
 *.class
-res_*.my
+res*.my
 target
 .DS_Store
 .classpath
